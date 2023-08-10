@@ -1,6 +1,6 @@
 const nodemailer = require('nodemailer');
-const Email = erquire('../models/Email');
-require(dotenv).config();
+const Email = require('../models/Email');
+require('dotenv').config();
 
 const emailController = {
   sendEmail: async (req, res) => {
@@ -17,9 +17,9 @@ const emailController = {
       });
 
       const mailOptions = {
-        from: process.env.EMAIL_USER,
+        from: emailData.email,
         to: 'stotev0@gmail.com',
-        subject: emailData.heading,
+        subject: `${emailData.heading} from ${emailData.email}`,
         text: emailData.body,
       };
 
